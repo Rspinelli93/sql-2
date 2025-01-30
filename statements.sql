@@ -70,10 +70,28 @@ INNER JOIN categorias ON usuarios.id_categoria = categorias.id_categoria;
 -- PASO 1
 -- Tu código aquí
 
+CREATE TABLE roles (
+    id_usuario_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT,
+    id_categoría INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria) 
+);
 
 -- PASO 2
 -- Tu código aquí
 
 
+
 -- PASO 3
 -- Tu código aquí
+
+SELECT 
+    usuarios.id_usuario, 
+    usuarios.nombre, 
+    usuarios.apellido, 
+    roles.nombre_rol, 
+    categorias.nombre_categoria
+FROM usuarios
+INNER JOIN roles ON usuarios.id_rol = roles.id_rol
+INNER JOIN categorias ON usuarios.id_categoria = categorias.id_categoria;
