@@ -26,15 +26,29 @@ ALTER TABLE usuarios ADD COLUMN id_rol INT;
 -- PASO 4
 -- Tu código aquí
 
+SELECT 
+    usuarios.id_usuario, 
+    usuarios.nombre, 
+    usuarios.apellido, 
+    usuarios.email, 
+    usuarios.edad, 
+    roles.nombre_rol
+FROM usuarios
+INNER JOIN roles ON usuarios.id_rol = roles.id_rol;
 
 /* Relación tipo 1:N */
 -- PASO 1
 -- Tu código aquí
 
+CREATE TABLE categorias (
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_categoria VARCHAR(100) NOT NULL
+);
 
 -- PASO 2
 -- Tu código aquí
 
+ALTER TABLE usuarios ADD COLUMN id_categoria INT;
 
 -- PASO 3
 -- Tu código aquí
@@ -42,6 +56,15 @@ ALTER TABLE usuarios ADD COLUMN id_rol INT;
 
 -- PASO 4
 -- Tu código aquí
+
+SELECT 
+    usuarios.id_usuario, 
+    usuarios.nombre, 
+    roles.nombre_rol, 
+    categorias.nombre_categoria
+FROM usuarios
+INNER JOIN roles ON usuarios.id_rol = roles.id_rol
+INNER JOIN categorias ON usuarios.id_categoria = categorias.id_categoria;
 
 /* Relación tipo N:M */
 -- PASO 1
